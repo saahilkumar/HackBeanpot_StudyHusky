@@ -1,7 +1,8 @@
 import React, { useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Button, Form, FormGroup, Label, Input, FormText, Row, Col, Alert, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, Alert, DropdownToggle, DropdownMenu, DropdownItem, Media} from 'reactstrap';
 import {ButtonDropdown} from "reactstrap";
+import StudyHuskyLogo from './StudyHuskyLogo.jpg';
 
 
 class ContainerComponent extends React.Component {
@@ -14,6 +15,15 @@ class ContainerComponent extends React.Component {
       leftRoom: false,
       room: 'Select room'
     }
+    
+    var img = new Image();
+    var div = document.getElementById('div-form');
+    img.onload = function(){
+        div.innerHTML += '<img src= "'+img.src+'" />';
+    };
+
+    img.src = './Components/StudyHuskyLogo.png';
+
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -54,20 +64,37 @@ class ContainerComponent extends React.Component {
 
   render() {
     return (
-      <div className='m-5'>
-          <h2>Nice job! You now have {this.props.kudos} kudos!</h2>
-        <Form onSubmit={this.handleSubmit}>
-        <FormGroup>
-            <Label>Please enter your NUID</Label>
-            <Input type="text" name="id" placeholder="000000000" onChange={(this.handleChange)}/>
-        </FormGroup>
-        {!this.state.occupied && <DropdownComponent2 onRoomChange={this.handleRoomChange} roomNumber={this.state.room}/>}
-        {this.state.occupied && <Alert color="success">You've joined this room!</Alert>}
-        {this.state.leftRoom && <Alert color="danger">You've left this room!</Alert>}
-        {!this.state.occupied && !this.state.leftRoom && <Button type="submit" color="success">Join this room</Button>}
-        {this.state.occupied && !this.state.leftRoom && <Button color="danger" onClick = {this.handleLeaveClick}>Leave this room</Button>}
-        </Form>
+      <div id="div-banner" >
+           {/* <Media id="media">
+              <Media left href="#">
+                <Media object src={StudyHuskyLogo.jpg}  alt="Husky Logo" />
+              </Media>
+              <Media body>
+                <Media heading >
+                    StudyHusky
+                </Media>
+                </Media>
+          </Media> */}
+        <div>
+            <h2 id="div-kudos">Nice job! You now have {this.props.kudos} kudos!</h2>
+        </div>
+        <div>
+            <h1 id="div-logo">StudyHusky</h1>
+        </div>
+        <div id="div-form">
+            <Form onSubmit={this.handleSubmit}>
+                <FormGroup>
+                    <Input type="text" name="id" placeholder="NUID" onChange={(this.handleChange)}/>
+                </FormGroup>
+                {!this.state.occupied && <DropdownComponent2 onRoomChange={this.handleRoomChange} roomNumber={this.state.room}/>}
+                {this.state.occupied && <Alert color="success">You've joined this room!</Alert>}
+                {this.state.leftRoom && <Alert color="danger">You've left this room!</Alert>}
+                {!this.state.occupied && !this.state.leftRoom && <Button type="submit" color="success">Join this room</Button>}
+                {this.state.occupied && !this.state.leftRoom && <Button color="danger" onClick = {this.handleLeaveClick}>Leave this room</Button>}
+            </Form>
+        </div>
       </div>
+
     );
   }
 }

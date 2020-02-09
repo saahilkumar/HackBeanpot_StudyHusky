@@ -53,10 +53,11 @@
   margin-top : 20px;
   margin-left: 600px;
   margin-right: 600px;
+  margin-bottom: 100px;
 }
 
 #div-logo {
-  margin-top : 200px;
+  margin-top : 20px;
   margin-left: 600px;
   margin-right: 600px;
   font-family: fantasy;
@@ -66,4 +67,26 @@
 
 #study {
   text-align: center;
+}
+
+#div-density1 {
+  margin-left: 50px;
+  margin-right: 50px;
+  display: inline-block;
+}
+
+#div-density2 {
+  margin-left: 50px;
+  margin-right: 50px;
+  display: inline-block;
+}
+#div-density3 {
+  margin-left: 50px;
+  margin-right: 50px;
+  display: inline-block;
+}
+
+#huskyimg {
+  width: 200px;
+  height: 200px;
 }

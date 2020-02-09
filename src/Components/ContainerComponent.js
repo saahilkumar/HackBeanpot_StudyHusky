@@ -2,6 +2,7 @@ import React, { useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Form, FormGroup, Label, Input, Alert, DropdownToggle, DropdownMenu, DropdownItem, Media} from 'reactstrap';
 import {ButtonDropdown} from "reactstrap";
+import DensityComponent from './DensityComponent';
 import StudyHuskyLogo from './StudyHuskyLogo.jpg';
 
 
@@ -16,13 +17,6 @@ class ContainerComponent extends React.Component {
       room: 'Select room'
     }
     
-    var img = new Image();
-    var div = document.getElementById('div-form');
-    img.onload = function(){
-        div.innerHTML += '<img src= "'+img.src+'" />';
-    };
-
-    img.src = './Components/StudyHuskyLogo.png';
 
 
     this.handleChange = this.handleChange.bind(this);
@@ -76,9 +70,11 @@ class ContainerComponent extends React.Component {
                 </Media>
           </Media> */}
         <div>
+          {/* <img src= {logo} />  */}
             <h2 id="div-kudos">Nice job! You now have {this.props.kudos} kudos!</h2>
         </div>
         <div>
+            <img id="huskyimg" src={StudyHuskyLogo} />
             <h1 id="div-logo">StudyHusky</h1>
         </div>
         <div id="div-form">
@@ -92,6 +88,15 @@ class ContainerComponent extends React.Component {
                 {!this.state.occupied && !this.state.leftRoom && <Button type="submit" color="success">Join this room</Button>}
                 {this.state.occupied && !this.state.leftRoom && <Button color="danger" onClick = {this.handleLeaveClick}>Leave this room</Button>}
             </Form>
+        </div>
+        <div id="div-density1">
+            <DensityComponent roomName="SN11" cur="5" max="8"/>
+        </div>
+        <div id="div-density2">
+            <DensityComponent roomName="SN12" cur="5" max="8"/>
+        </div>
+        <div id="div-density3">
+            <DensityComponent roomName="SN13" cur="5" max="8"/>
         </div>
       </div>
 

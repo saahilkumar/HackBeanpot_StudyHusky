@@ -65,8 +65,28 @@ class App extends Component {
         console.log('auth ran')
         this.handleAuth();
       }
-      
+
+      console.log(this.getClassrooms());
     }
+
+  getClassrooms() {
+    const rootRef = firebase.database().ref();
+    rootRef.child('Classroom').on("value", snap=> {
+      const foo = snap.val();
+      const dataArr = [1,2,3];
+      Object.keys(foo).forEach(key => {
+        console.log(key);
+        let maxO = foo[key]['maxOcc'];
+        let currO = foo[key]['currOcc'];
+        dataArr.push({
+          room: key,
+          maxVal: maxO,
+          curVal: currO
+        });
+      })
+      return dataArr;
+    })
+  }
 
   handleAuth = () => {
     var provider = new firebase.auth.GoogleAuthProvider();
@@ -161,6 +181,7 @@ class App extends Component {
       });
     }
   }
+  
 
   render() {
     return (
@@ -184,7 +205,8 @@ class App extends Component {
         </header>*/}
         <ContainerComponent onLocChange = {this.handleLocationChange}
           populate = {this.populate} submitAdd = {this.handleSubmitAdd}
-          submitSub= {this.handleSubmitSub} kudos = {this.state.kudos}/>
+          submitSub= {this.handleSubmitSub} kudos = {this.state.kudos}
+          maxOcc={this.state.maxOcc}/>
       </div>
     );
   }

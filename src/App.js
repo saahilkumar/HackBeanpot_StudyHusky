@@ -66,13 +66,16 @@ class App extends Component {
         this.handleAuth();
       }
 
-      console.log(this.getClassrooms());
+      console.log();
     }
 
   getClassrooms() {
+    const classR = ['SN11', 'SN12', 'SN13'];
     const rootRef = firebase.database().ref();
+    // return rootRef.child('Classroom').child('SN11').child('currOcc').
     rootRef.child('Classroom').on("value", snap=> {
       const foo = snap.val();
+      console.log(foo);
       const dataArr = [1,2,3];
       Object.keys(foo).forEach(key => {
         console.log(key);
@@ -86,6 +89,51 @@ class App extends Component {
       })
       return dataArr;
     })
+  }
+
+  getSN11() {
+    const rootRef = firebase.database().ref().child('Classroom').child('SN11');
+    const currOcc = rootRef.child('currOcc');
+    const maxOcc = rootRef.child('maxOcc');
+    var x = [0,0];
+    currOcc.on('value', snap => {
+      x[0] = snap.val()
+    });
+    maxOcc.on('value', snap => {
+      x[1] = snap.val()
+    });
+
+    return x;
+  }
+
+  getSN12() {
+    const rootRef = firebase.database().ref().child('Classroom').child('SN12');
+    const currOcc = rootRef.child('currOcc');
+    const maxOcc = rootRef.child('maxOcc');
+    var x = [0,0];
+    currOcc.on('value', snap => {
+      x[0] = snap.val()
+    });
+    maxOcc.on('value', snap => {
+      x[1] = snap.val()
+    });
+    
+    return x;
+  }
+
+  getSN13() {
+    const rootRef = firebase.database().ref().child('Classroom').child('SN13');
+    const currOcc = rootRef.child('currOcc');
+    const maxOcc = rootRef.child('maxOcc');
+    var x = [0,0];
+    currOcc.on('value', snap => {
+      x[0] = snap.val()
+    });
+    maxOcc.on('value', snap => {
+      x[1] = snap.val()
+    });
+    
+    return x;
   }
 
   handleAuth = () => {
@@ -206,7 +254,7 @@ class App extends Component {
         <ContainerComponent onLocChange = {this.handleLocationChange}
           populate = {this.populate} submitAdd = {this.handleSubmitAdd}
           submitSub= {this.handleSubmitSub} kudos = {this.state.kudos}
-          maxOcc={this.state.maxOcc}/>
+          maxOcc={this.state.maxOcc} sn11={this.getSN11()} sn12={this.getSN12()} sn13={this.getSN13()}/>
       </div>
     );
   }

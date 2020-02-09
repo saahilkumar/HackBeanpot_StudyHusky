@@ -90,13 +90,13 @@ class ContainerComponent extends React.Component {
             </Form>
         </div>
         <div id="div-density1">
-            <DensityComponent roomName="SN11" cur="5" max="8"/>
+            <DensityComponent roomName="SN11" cur={this.props.sn11[0]} max={this.props.sn11[1]}/>
         </div>
         <div id="div-density2">
-            <DensityComponent roomName="SN12" cur="5" max="8"/>
+            <DensityComponent roomName="SN12" cur={this.props.sn12[0]} max={this.props.sn12[1]}/>
         </div>
         <div id="div-density3">
-            <DensityComponent roomName="SN13" cur="5" max="8"/>
+            <DensityComponent roomName="SN13" cur={this.props.sn13[0]} max={this.props.sn13[1]}/>
         </div>
       </div>
 

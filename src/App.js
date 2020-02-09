@@ -38,12 +38,6 @@ class App extends Component {
     this.setState({location : locVal})
   }
 
-  // populate = (e) => {
-  //   // e.preventDefault();
-  //   console.log(this.state)
-
-  // }
-
     //this is called after inital DOM
     componentDidMount() {
       const classRef = firebase.database().ref().child('Classroom').child('SN11');
@@ -234,23 +228,6 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {/*}<header className="App-header">
-        <button onClick=
-        {this.populate}
-        >Populate</button>
-        <button onClick=
-        {this.handleSubmitAdd}
-        >Occupy</button>
-        <button onClick=
-        {this.handleSubmitSub}
-        >Leave</button>
-        <p>
-        {this.state.currOcc}
-        </p>
-        <p>
-        {this.state.maxOcc}
-        </p>
-        </header>*/}
         <ContainerComponent onLocChange = {this.handleLocationChange}
           populate = {this.populate} submitAdd = {this.handleSubmitAdd}
           submitSub= {this.handleSubmitSub} kudos = {this.state.kudos}

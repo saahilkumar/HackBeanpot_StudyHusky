@@ -35,7 +35,6 @@ class ContainerComponent extends React.Component {
     this.setState({ occupied: true}, () => {
       console.log(this.state.room + ' ' + this.state.id);
     });
-    //this.props.onLocChange(this.state.room);
     this.props.submitAdd(e);
     e.preventDefault();
   }
@@ -48,29 +47,15 @@ class ContainerComponent extends React.Component {
   }
 
   handleRoomChange(roomVal) {
-    // const promise = this.setState({ room: roomVal});
-    // const promise2 = promise.then(this.props.populate(), console.log('fail'));
     this.setState({ room: roomVal }, () => {
       this.props.onLocChange(this.state.room);
     });
-    // this.props.populate();
   }
 
   render() {
     return (
       <div id="div-banner" >
-           {/* <Media id="media">
-              <Media left href="#">
-                <Media object src={StudyHuskyLogo.jpg}  alt="Husky Logo" />
-              </Media>
-              <Media body>
-                <Media heading >
-                    StudyHusky
-                </Media>
-                </Media>
-          </Media> */}
         <div>
-          {/* <img src= {logo} />  */}
             <h2 id="div-kudos">Nice job! You now have {this.props.kudos} kudos!</h2>
         </div>
         <div>
@@ -126,12 +111,6 @@ class DropdownComponent2 extends React.Component {
 
   changeValue(e) {
     this.props.onRoomChange(e.currentTarget.textContent);
-    // this.setState({dropDownValue: e.currentTarget.textContent}, () => {
-    //     console.log(this.state.dropDownValue);
-    // });
-    // this.setState({dropDownValue: e.currentTarget.textContext}, () => {
-    //         this.props.onRoomChange(e.currentTarget.textContent);
-    //     })
   }
 
   render() {

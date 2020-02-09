@@ -7,11 +7,23 @@ class DensityComponent extends React.Component {
         super(props);
     }
 
+    getColor() {
+        if(this.props.occupancy < 0.5) {
+            return "success";
+        }
+        if(this.props.occupancy < 0.8) {
+            return "warning";
+        }
+        else {
+            return "danger";
+        }
+    }
+
     render() {
         return (
             <div>
                 <h2>{this.props.roomName}</h2>
-                <Button>{this.props.cur} / {this.props.max}</Button>
+                <Button color={this.getColor()}>{this.props.cur} / {this.props.max}</Button>
             </div>
         );
     }

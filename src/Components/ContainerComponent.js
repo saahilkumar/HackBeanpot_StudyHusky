@@ -94,6 +94,7 @@ class DropdownComponent2 extends React.Component {
 
   changeValue(e) {
     this.props.onRoomChange(e.currentTarget.textContent);
+    console.log('hello');
     // this.setState({dropDownValue: e.currentTarget.textContent}, () => {
     //     console.log(this.state.dropDownValue);
     // });

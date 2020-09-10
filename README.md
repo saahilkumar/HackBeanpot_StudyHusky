@@ -4,3 +4,5 @@ StudyHusky is a helpful tool for students to remotely check which classrooms are
 
 - We used React to create an interactive front-end
 - We used Firebase to mimic a server and database which allowed us to both read and write data for real-time updating of room occupancies
+
+Link to video demo: https://youtu.be/oFnFu2Ef0hw
